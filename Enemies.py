@@ -21,7 +21,7 @@ class EvilCar():
 
     # param - carLane (int)
     def __init__(self, carLane):
-        self.__car = pygame.image.load("hotdogs.png")
+        self.__car = pygame.image.load("public/roadrage/enemycar.png")
         self.__car = pygame.transform.scale(self.__car, (RESIZE))
         self.__carRect = self.__car.get_rect()
         if carLane == ONE:

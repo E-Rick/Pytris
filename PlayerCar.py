@@ -25,7 +25,7 @@ SWITCH_TWO_THREE = 85
 class PlayerCar():
 # -- init -------------------------------------------------------------------
     def __init__(self):
-        self.__player = pygame.image.load("cars.png")
+        self.__player = pygame.image.load("public/roadrage/playercar.png")
         self.__player = pygame.transform.scale(self.__player, (RESIZE))
         self.__lane = TWO
         self.__playerRect = self.__player.get_rect()

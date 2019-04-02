@@ -1,2 +1,2 @@
 # Pytris
-A tetris clone made using python and pygame
+A tetris clone and 2D car dodging game made using python and pygame

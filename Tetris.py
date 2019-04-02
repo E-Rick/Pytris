@@ -274,13 +274,13 @@ def pauseAndControls(font,color):
 def loadMusic():
     randomNumber = random.randint(0,THREE)
     if randomNumber == 0:
-        pygame.mixer.music.load('Tetris_MusicA.mid')
+        pygame.mixer.music.load('public/music/Tetris_MusicA.mid')
     elif randomNumber == 1:
-        pygame.mixer.music.load('Tetris_MusicB.mid')
+        pygame.mixer.music.load('public/music/Tetris_MusicB.mid')
     elif randomNumber == TWO:
-        pygame.mixer.music.load('Tetris_MusicB2.mid')
+        pygame.mixer.music.load('public/music/Tetris_MusicB2.mid')
     else:
-        pygame.mixer.music.load('Tetris_MusicA2.mid')
+        pygame.mixer.music.load('public/music/Tetris_MusicA2.mid')
     pygame.mixer.music.play(-1, 0.0)
 
 
@@ -666,7 +666,7 @@ def runGame():
                 lastFallT = time.time()
 
         # drawing everything on the screen
-        background = pygame.image.load('background.jpg')
+        background = pygame.image.load('public/pytris/background.jpg')
         backgroundRect = background.get_rect()
         SCREEN.blit(background,backgroundRect)
         drawBoard(gameBoard)
@@ -689,19 +689,19 @@ def main():
     FPSCLOCK = pygame.time.Clock()
     SCREEN = pygame.display.set_mode((W_WIDTH, W_HEIGHT))
     BASICFONT = pygame.font.Font('freesansbold.ttf', BASIC_SZ)
-    PAUSEDFONT = pygame.font.Font('Digital_tech.otf',PAUSED_SZ)
+    PAUSEDFONT = pygame.font.Font('public/fonts/Digital_tech.otf',PAUSED_SZ)
     HELPFONT = pygame.font.Font('freesansbold.ttf',HELP_SZ)
-    LARGEFONT = pygame.font.Font('Digital_tech.otf',LARGE_SZ)
-    pygame.display.set_caption('Tetromino')
+    LARGEFONT = pygame.font.Font('public/fonts/Digital_tech.otf',LARGE_SZ)
+    pygame.display.set_caption('Pytris')
     showTextScreen('Pytris')
     while True: # game loop
         loadMusic()
         runGame()
         pygame.mixer.music.stop()
         if random.randint(0, 1) == 0:
-            pygame.mixer.music.load('gameover.wav')
+            pygame.mixer.music.load('public/effects/gameover.wav')
         else:
-            pygame.mixer.music.load('game_over.wav')
+            pygame.mixer.music.load('public/effects/game_over.wav')
         pygame.mixer.music.play(0)
         showTextScreen('Game Over')
 

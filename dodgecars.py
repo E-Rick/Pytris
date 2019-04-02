@@ -42,7 +42,7 @@ pygame.init()
 TEXT_COLOR = BLACK
 SHADOW_COLOR = GRAY
 SCREENSURF = pygame.display.set_mode([W_WIDTH,W_HEIGHT])
-BG = pygame.image.load("road.png")
+BG = pygame.image.load("public/roadrage/road.png")
 BG_RECT = BG.get_rect()
 pygame.key.set_repeat(65, 65)
 MAIN_CLOCK = pygame.time.Clock()
@@ -60,9 +60,9 @@ def createTextObject(text, fontName, color=GRAY):
 def loadMusic():
     randomNumber = random.randint(0,1)
     if randomNumber == 0:
-        pygame.mixer.music.load('rainbow_road.mid')
+        pygame.mixer.music.load('public/music/rainbow_road.mid')
     else:
-        pygame.mixer.music.load('mk64sherbet.mid')
+        pygame.mixer.music.load('public/music/mk64sherbet.mid')
     pygame.mixer.music.play(-1, 0.0)
 
 # checks for any quit events
@@ -87,7 +87,7 @@ def checkForKeyPress():
 # param title (string)
 # displays a screen with text
 def showScreen(title):
-    LARGEFONT = pygame.font.Font('Digital_tech.otf', BIG_SIZE)
+    LARGEFONT = pygame.font.Font('public/fonts/Digital_tech.otf', BIG_SIZE)
     BASICFONT = pygame.font.Font('freesansbold.ttf', SMALL_SIZE)
     titleSurf, titleRect = createTextObject(title, LARGEFONT, SHADOW_COLOR)
     titleRect.center = (int(W_WIDTH/ HALF), int(W_HEIGHT / HALF))
@@ -120,7 +120,7 @@ def endGame():
 def crash(x, y):
     pygame.mixer.music.stop()
     loadSounds()
-    crashImg = pygame.image.load('explosion.png')
+    crashImg = pygame.image.load('public/effects/explosion.png')
     crashRect = crashImg.get_rect()
     crashRect.center = (x,y)
     SCREENSURF.blit(crashImg,crashRect)
@@ -139,9 +139,9 @@ def playerHitEnemy(playerRect, enemies):
 # Loads game over sounds
 def loadSounds():
     if random.randint(0, 1) == 0:
-        pygame.mixer.music.load('gameover.wav')
+        pygame.mixer.music.load('public/effects/gameover.wav')
     else:
-        pygame.mixer.music.load('game_over.wav')
+        pygame.mixer.music.load('public/effects/game_over.wav')
     pygame.mixer.music.play(0)
 
 #Lets BEGIN :D
@@ -249,7 +249,7 @@ def begin():
 # Makes background and starting screen then runs a main game loop
 def main():
     # import background and draw it
-    backgroundSurf = pygame.image.load('DodgerBG.jpg')
+    backgroundSurf = pygame.image.load('public/roadrage/DodgerBG.jpg')
     backgroundRect = backgroundSurf.get_rect()
     SCREENSURF.blit(backgroundSurf,backgroundRect)
     showScreen('ROAD RAGE 2D')

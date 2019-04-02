@@ -30,15 +30,17 @@ NEW_GAME_Y = 50
 HELP_Y = 50
 MINI_GAME_Y = 150
 
-CRED_POS = 640,475
+CRED_POS = 640, 475
 
 # Colors   R   G   B
-GRAY  =  (100,100,100)
-WHITE =  (255,255,255)
+GRAY = (100, 100, 100)
+WHITE = (255, 255, 255)
 
-ROAD_RAGE = 600,600
+ROAD_RAGE = 600, 600
 
 # First closes pygame's modules then system exits to terminate program
+
+
 def terminateGame():
     pygame.quit()
     sys.exit()
@@ -54,7 +56,7 @@ class Menu():
     # Param - font (font.Font)
     # Param - screen (pygame.Surface)
     # Param - color (tuple)
-    def __init__(self, text, position, font, screen, color = GRAY):
+    def __init__(self, text, position, font, screen, color=GRAY):
         self.__text = text
         self.__coordinate = position
         self.__font = font
@@ -81,6 +83,7 @@ class Menu():
         else:
             return self.__color
     # Sets rect
+
     def setRect(self):
         self.setRend()
         self.rect = self.rend.get_rect()
@@ -91,43 +94,40 @@ def main():
     # initialize pygame modules
     pygame.init()
     # make screen GUI
-    screen = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT))
-    pygame.display.set_caption('Erick & Jayson')
+    screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+    pygame.display.set_caption('Erick')
     # load background image and get dimensions
-    background = pygame.image.load('space.jpg')
+    background = pygame.image.load('public/pytris/space.jpg')
     backgroundRect = background.get_rect()
     # load fonts
-    menuFont = pygame.font.Font('Digital_tech.otf', SZ_50)
-    titleFont = pygame.font.Font('Teio.ttf', SZ_80)
-    creditFont = pygame.font.Font('Digital_tech.otf',SZ_20)
+    menuFont = pygame.font.Font('public/fonts/Digital_tech.otf', SZ_50)
+    titleFont = pygame.font.Font('public/fonts/Teio.ttf', SZ_80)
+    creditFont = pygame.font.Font('public/fonts/Digital_tech.otf', SZ_20)
 
     # Makes title text
     titleSurface = titleFont.render('PYTRIS', True, GRAY)
     titleRect = titleSurface.get_rect()
     titleRect.center = (WINDOW_WIDTH/HALF, WINDOW_HEIGHT/SIX)
 
-
     # Makes credits text
-    creditSurface = creditFont.render\
-        ('Credits: Erick Martinez, Jayson Ramos, Al Sweigart', True, GRAY)
+    creditSurface = creditFont.render('Credits: Erick Martinez', True, GRAY)
     creditRect = creditSurface.get_rect()
     creditRect.bottomright = (CRED_POS)
     # Makes menu option objects
     newGameOption = Menu("NEW GAME", (WINDOW_WIDTH/HALF + TWO,
-                        WINDOW_HEIGHT/HALF - NEW_GAME_Y), menuFont, screen)
-    exitGameOption = Menu("EXIT GAME",(WINDOW_WIDTH/HALF + TWO,
-                        WINDOW_HEIGHT/HALF), menuFont, screen)
+                                      WINDOW_HEIGHT/HALF - NEW_GAME_Y), menuFont, screen)
+    exitGameOption = Menu("EXIT GAME", (WINDOW_WIDTH/HALF + TWO,
+                                        WINDOW_HEIGHT/HALF), menuFont, screen)
     helpOption = Menu("HELP", (WINDOW_WIDTH/HALF + TWO,
-                        WINDOW_HEIGHT/HALF + HELP_Y), menuFont, screen)
-    miniGameOption = Menu('Dodger Minigame',(WINDOW_WIDTH/HALF + TWO,
-                        WINDOW_HEIGHT/HALF + MINI_GAME_Y), menuFont, screen)
+                               WINDOW_HEIGHT/HALF + HELP_Y), menuFont, screen)
+    miniGameOption = Menu('Dodger Minigame', (WINDOW_WIDTH/HALF + TWO,
+                                              WINDOW_HEIGHT/HALF + MINI_GAME_Y), menuFont, screen)
 
-
-    while True: # Loop
+    while True:  # Loop
         pygame.event.pump()
-        screen.blit(background,backgroundRect)
-        screen.blit(titleSurface,titleRect)
-        screen.blit(creditSurface,creditRect)
+        screen.blit(background, backgroundRect)
+        screen.blit(titleSurface, titleRect)
+        screen.blit(creditSurface, creditRect)
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -136,14 +136,14 @@ def main():
         if newGameOption.rect.collidepoint(pygame.mouse.get_pos()):
             newGameOption.hoveredOver = True
             if pygame.mouse.get_pressed()[0]:
-                    Tetris.main()
+                Tetris.main()
         else:
             newGameOption.hoveredOver = False
 
         if exitGameOption.rect.collidepoint(pygame.mouse.get_pos()):
             exitGameOption.hoveredOver = True
             if pygame.mouse.get_pressed()[0]:
-                    terminateGame()
+                terminateGame()
         else:
             exitGameOption.hoveredOver = False
 
@@ -156,13 +156,12 @@ def main():
             miniGameOption.hoveredOver = False
 
         if helpOption.rect.collidepoint(pygame.mouse.get_pos()):
-                helpOption.hoveredOver = True
-                if pygame.mouse.get_pressed()[0]:
-                    HelpGUI.runGUI()
+            helpOption.hoveredOver = True
+            if pygame.mouse.get_pressed()[0]:
+                HelpGUI.runGUI()
 
         else:
-                helpOption.hoveredOver = False
-
+            helpOption.hoveredOver = False
 
         newGameOption.draw()
         helpOption.draw()
